@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <h3>Questions</h3>
-                    <label for="q1">What's your favorite color?</label>
+                    <label for="q1">Pick a crayola color.</label>
                     <select class="form-control" id="q1">
                         <option>Please Select One</option>
                         <option>1</option>
@@ -41,7 +41,7 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    <label for="q2">What's your favorite color?</label>
+                    <label for="q2">How much do you LOVE absurd Buzzfeed quizzes?</label>
                     <select class="form-control" id="q2">
                         <option>Please Select One</option>
                         <option>1</option>
@@ -50,7 +50,7 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    <label for="q3">What's your favorite color?</label>
+                    <label for="q3">What kind of french fries do you like?</label>
                     <select class="form-control" id="q3">
                         <option>Please Select One</option>
                         <option>1</option>
@@ -59,102 +59,106 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    <label for="q4">What's your favorite color?</label>
-                    <select class="form-control" id="q4">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q5">What's your favorite color?</label>
-                    <select class="form-control" id="q5">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q6">What's your favorite color?</label>
-                    <select class="form-control" id="q6">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q7">What's your favorite color?</label>
-                    <select class="form-control" id="q7">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q8">What's your favorite color?</label>
-                    <select class="form-control" id="q8">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q9">What's your favorite color?</label>
-                    <select class="form-control" id="q9">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q10">What's your favorite color?</label>
-                    <select class="form-control" id="q10">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
 
-                <br>
-                <div class="text-left">
-                    <button type="submit" class="btn btn-primary btn-md" id="search-btn">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- end .row-->
+                    <br>
+                    <div class="text-left">
+                        <button type="submit" class="btn btn-primary btn-md" id="search-btn">Your fate awaits...
+                        </button>
+                    </div> <!-- /.text-left-->
+                </div> <!-- /.form-group-->
+            </div> <!-- /.panel-body-->
+        </div> <!-- /.panel panel-default-->
+    </div> <!-- /.row-->
     <div class="row">
         <div class="col-lg-12">
-            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/amcosta9/friendFinder">GitHub Repo</a>
+            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/amcosta9/friendFinder">GitHub
+            Repo</a>
         </div>
-    </div> <!-- end .row-->
-</div> <!-- end .container-->
+    </div> <!-- /.row-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="resultsModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Your Results Are In...</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> <!-- /.modal-footer -->
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+</div> <!-- /.container-->
 
 <script type="text/javascript">
-    $("#search-btn").on("click", function(event) {
+    $("#search-btn").on("click", function (event) {
         event.preventDefault();
+        // create new object for user answers
 
         var newSurvey = {
             name: $("#user-name").val().trim(),
             photo: $("#user-photo").val().trim(),
-            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+            scores: [ $("#q1").val(), $("#q2").val(), $("#q3").val()]
         };
 
-        $.post("/api/survey", newSurvey);
-//
+
+
+                            var totalDifference = 0,
+                                currentMatch;
         alert("Searching for Matches");
 //        $(".form-group").reset();
-//
+        function calcResults(newSurvey) {
+        alert('calculating results');
+            var currentURL = window.location.origin;
+            $.ajax({url: currentURL + "/api/friends", method: "GET"})
+                .done(function (friendsData) {
+                    // Here we are logging the URL so we have access to it for troubleshooting
+                    console.log("URL: " + currentURL + "/api/friends");
+                    // Here we then log the friends to console, where it will show up as an object.
+                    console.log(friendsData);
+                        console.log('newSurvey', newSurvey.scores);
+                        currentMatch = friendsData[0];
+                        var currentMatchDiff = 99;
+                    // Loop through and calculate differences for each of the friends
+                    for (var i = 0; i < friendsData.length; i++) {
+                        totalDifference = 0;
+                        console.log('friendsData', friendsData[i].scores);
+                        console.log('newsurv scores length', newSurvey.scores.length);
+                        for (var j = 0; j < newSurvey.scores.length; j++) {
+                            var thisDiff = Math.abs(friendsData[i].scores[j] - newSurvey.scores[j]);
+                            totalDifference += thisDiff;
+                        } // /newSurvey.scores.length for loop
+                            if (totalDifference < currentMatchDiff){
+                                currentMatchDiff = totalDifference;
+                                currentMatch = friendsData[i];
+                            }
+                            console.log(friendsData[i].name);
+                            console.log('totalDifference',totalDifference);
+                            console.log('currentMatch', currentMatch);
+                            console.log('currentMatchDiff', currentMatchDiff);
+                    } // /friendsData.length for loop
+                    console.log('--------------------------');
+                    console.log('Your Match is: ' + currentMatch.name);
 
-    });
+            triggerModal(currentMatch);
+                }); // //ajax.done()
+        } // /calcResults()
+
+    calcResults(newSurvey);
+
+
+        // append to modal
+function triggerModal(currentMatch){
+    $(".modal-body").html('<p>Your match is ' + currentMatch.name + '!</p>');
+    $('#resultsModal').modal('show')
+}
+
+        $.post("/api/survey", newSurvey);
+    }); // /.on('click')
 </script>
 </body>
 </html>
