@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Finder - Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Friend Finder</h1>
+        <hr>
+        <a href="/">
+            <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></button>
+        </a>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Survey Questions</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <h3>About You</h3>
+                    <label for="user-name">Name</label>
+                    <input type="text" id="user-name" class="form-control">
+                    <label for="user-photo">Link to Photo</label>
+                    <input type="text" id="user-photo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <h3>Questions</h3>
+                    <label for="q1">What's your favorite color?</label>
+                    <select class="form-control" id="q1">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q2">What's your favorite color?</label>
+                    <select class="form-control" id="q2">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q3">What's your favorite color?</label>
+                    <select class="form-control" id="q3">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q4">What's your favorite color?</label>
+                    <select class="form-control" id="q4">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q5">What's your favorite color?</label>
+                    <select class="form-control" id="q5">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q6">What's your favorite color?</label>
+                    <select class="form-control" id="q6">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q7">What's your favorite color?</label>
+                    <select class="form-control" id="q7">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q8">What's your favorite color?</label>
+                    <select class="form-control" id="q8">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q9">What's your favorite color?</label>
+                    <select class="form-control" id="q9">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label for="q10">What's your favorite color?</label>
+                    <select class="form-control" id="q10">
+                        <option>Please Select One</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                <br>
+                <div class="text-left">
+                    <button type="submit" class="btn btn-primary btn-md" id="search-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end .row-->
+    <div class="row">
+        <div class="col-lg-12">
+            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/amcosta9/friendFinder">GitHub Repo</a>
+        </div>
+    </div> <!-- end .row-->
+</div> <!-- end .container-->
+
+<script type="text/javascript">
+    $("#search-btn").on("click", function(event) {
+        event.preventDefault();
+
+        var newSurvey = {
+            name: $("#user-name").val().trim(),
+            photo: $("#user-photo").val().trim(),
+            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+        };
+
+        $.post("/api/survey", newSurvey);
+//
+        alert("Searching for Matches");
+//        $(".form-group").reset();
+//
+
+    });
+</script>
+</body>
+</html>
