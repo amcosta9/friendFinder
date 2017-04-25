@@ -13,6 +13,7 @@
     <div class="jumbotron">
         <h1>Friend Finder</h1>
         <hr>
+        <h4>Answer a few questions to see your match!</h4>
         <a href="/">
             <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></button>
         </a>
@@ -102,17 +103,15 @@
         var newSurvey = {
             name: $("#user-name").val().trim(),
             photo: $("#user-photo").val().trim(),
-            scores: [ $("#q1").val(), $("#q2").val(), $("#q3").val()]
+            scores: [$("#q1").val(), $("#q2").val(), $("#q3").val()]
         };
 
 
-
-                            var totalDifference = 0,
-                                currentMatch;
+        var totalDifference = 0,
+            currentMatch;
         alert("Searching for Matches");
 //        $(".form-group").reset();
         function calcResults(newSurvey) {
-        alert('calculating results');
             var currentURL = window.location.origin;
             $.ajax({url: currentURL + "/api/friends", method: "GET"})
                 .done(function (friendsData) {
@@ -120,9 +119,9 @@
                     console.log("URL: " + currentURL + "/api/friends");
                     // Here we then log the friends to console, where it will show up as an object.
                     console.log(friendsData);
-                        console.log('newSurvey', newSurvey.scores);
-                        currentMatch = friendsData[0];
-                        var currentMatchDiff = 99;
+                    console.log('newSurvey', newSurvey.scores);
+                    currentMatch = friendsData[0];
+                    var currentMatchDiff = 99;
                     // Loop through and calculate differences for each of the friends
                     for (var i = 0; i < friendsData.length; i++) {
                         totalDifference = 0;
@@ -132,30 +131,33 @@
                             var thisDiff = Math.abs(friendsData[i].scores[j] - newSurvey.scores[j]);
                             totalDifference += thisDiff;
                         } // /newSurvey.scores.length for loop
-                            if (totalDifference < currentMatchDiff){
-                                currentMatchDiff = totalDifference;
-                                currentMatch = friendsData[i];
-                            }
-                            console.log(friendsData[i].name);
-                            console.log('totalDifference',totalDifference);
-                            console.log('currentMatch', currentMatch);
-                            console.log('currentMatchDiff', currentMatchDiff);
+                        if (totalDifference < currentMatchDiff) {
+                            currentMatchDiff = totalDifference;
+                            currentMatch = friendsData[i];
+                        }
+                        console.log(friendsData[i].name);
+                        console.log('totalDifference', totalDifference);
+                        console.log('currentMatch', currentMatch);
+                        console.log('currentMatchDiff', currentMatchDiff);
                     } // /friendsData.length for loop
                     console.log('--------------------------');
                     console.log('Your Match is: ' + currentMatch.name);
 
-            triggerModal(currentMatch);
+                    triggerModal(currentMatch);
                 }); // //ajax.done()
         } // /calcResults()
 
-    calcResults(newSurvey);
+        calcResults(newSurvey);
 
 
         // append to modal
-function triggerModal(currentMatch){
-    $(".modal-body").html('<p>Your match is ' + currentMatch.name + '!</p>');
-    $('#resultsModal').modal('show')
-}
+        function triggerModal(currentMatch) {
+            $(".modal-body").append('<p>Your match is ' + currentMatch.name + '!</p>');
+            $(".modal-body").append('<img src="' + currentMatch.photo + '">');
+
+
+            $('#resultsModal').modal('show')
+        }
 
         $.post("/api/survey", newSurvey);
     }); // /.on('click')
