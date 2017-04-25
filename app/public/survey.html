@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Friend Finder - Survey</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -15,87 +16,100 @@
         <hr>
         <h4>Answer a few questions to see your match!</h4>
         <a href="/">
-            <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span></button>
+            <button type="button" class="btn btn-default btn-lg"><span><i class="material-icons">fast_rewind</i></span></button>
         </a>
     </div>
     <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
                 <h3 class="panel-title">Survey Questions</h3>
             </div>
-            <div class="panel-body">
-                <div class="form-group">
+               <div class="row">
                     <h3>About You</h3>
-                    <label for="user-name">Name</label>
-                    <input type="text" id="user-name" class="form-control">
-                    <label for="user-photo">Link to Photo</label>
-                    <input type="text" id="user-photo" class="form-control">
-                </div>
-                <div class="form-group">
-                    <h3>Questions</h3>
-                    <label for="q1">Pick a crayola color.</label>
-                    <select class="form-control" id="q1">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q2">How much do you LOVE absurd Buzzfeed quizzes?</label>
-                    <select class="form-control" id="q2">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <label for="q3">What kind of french fries do you like?</label>
-                    <select class="form-control" id="q3">
-                        <option>Please Select One</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <div class="input-field col s6">
+                        <input id="user-name" type="text" class="validate">
+                        <label for="user-name">Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="user-photo" type="text" class="validate">
+                        <label for="user-photo">Link to Photo</label>
+                    </div>
+               </div>
 
+    <div class="row">
+
+                    <h3>Questions</h3>
+                    <div class="input-field col s12">
+                        <select id="q1">
+                            <option value="" disabled selected>Please Select One</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                            <option value="5">Option 5</option>
+                        </select>
+                        <label>Pick a Crayola color</label>
+                    </div>
+    </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="q2">
+                            <option value="" disabled selected>Please Select One</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                            <option value="5">Option 5</option>
+                        </select>
+                        <label>How much do you LOVE absurd Buzzfeed quizzes?</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="q3">
+                            <option value="" disabled selected>Please Select One</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                            <option value="5">Option 5</option>
+                        </select>
+                        <label>What kind of french fries do you like?</label>
+                    </div>
+                </div>
                     <br>
+                <div class="row">
                     <div class="text-left">
                         <button type="submit" class="btn btn-primary btn-md" id="search-btn">Your fate awaits...
                         </button>
                     </div> <!-- /.text-left-->
-                </div> <!-- /.form-group-->
-            </div> <!-- /.panel-body-->
-        </div> <!-- /.panel panel-default-->
-    </div> <!-- /.row-->
+                </div>
+
     <div class="row">
         <div class="col-lg-12">
             <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/amcosta9/friendFinder">GitHub
             Repo</a>
         </div>
     </div> <!-- /.row-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="resultsModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Your Results Are In...</h4>
-                </div>
-                <div class="modal-body">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div> <!-- /.modal-footer -->
-            </div> <!-- /.modal-content -->
-        </div> <!-- /.modal-dialog -->
-    </div> <!-- /.modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <h4>Your Results Are In...</h4>
+            <div class="modal-body">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+
+
 </div> <!-- /.container-->
 
 <script type="text/javascript">
+    $('select').material_select();
+    $('.modal').modal();
     $("#search-btn").on("click", function (event) {
         event.preventDefault();
         // create new object for user answers
@@ -152,11 +166,14 @@
 
         // append to modal
         function triggerModal(currentMatch) {
+            console.log('trig modal function');
+
             $(".modal-body").append('<p>Your match is ' + currentMatch.name + '!</p>');
             $(".modal-body").append('<img src="' + currentMatch.photo + '">');
 
 
-            $('#resultsModal').modal('show')
+//            $('#resultsModal').modal('show')
+            $('#resultsModal').modal('open');
         }
 
         $.post("/api/survey", newSurvey);

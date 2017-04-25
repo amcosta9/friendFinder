@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+
+
 // requiring api and html routes, setting function to express app route
 require("./app/routing/apiRoutes")(app);
 require("./app/routing/htmlRoutes")(app);

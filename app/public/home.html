@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Friend Finder</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <div class="jumbotron">
-        <h1>Friend Finder</h1>
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://images.unsplash.com/photo-1450297428000-5f0b50540da9?dpr=1&auto=format&fit=crop&w=767&h=511&q=80&cs=tinysrgb&crop=&bg="></div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">Friend Finder</h2>
+            <p class="grey-text text-darken-3 lighten-3">Find your match and make a forever friend</p>
         <hr>
         <a href="/survey"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Go To Survey</button></a>
-
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://images.unsplash.com/photo-1474925558543-e7a5f06e733e?dpr=1&auto=format&fit=crop&w=767&h=511&q=80&cs=tinysrgb&crop=&bg="></div>
+        <!--<div class="parallax"><img src="../assets/friends2.jpg"></div>-->
     </div>
     <div class="row">
         <div class="col-lg-12">
             <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/amcosta9/friendFinder">GitHub Repo</a>
         </div>
     </div>
-</div>
-
+<script>
+    $('.parallax').parallax();
+</script>
 </body>
 </html>
