@@ -8,7 +8,7 @@
 1. Install the app by cloning this repo and navigating to the file in the command line.
 2. Remember to `npm install` so the dependencies are loaded to your local copy of the app.
 3. Run the application by typing `node server.js` in the command line.
-4. Navigate to: `localhost:4321/` in the browser to checkout the app.  Alternatively, this app is live at: ` heroku link here `
+4. Navigate to: `localhost:4321/` in the browser to check out the app.  Alternatively, this app is live [here](https://need-new-bff.herokuapp.com/).
 
 
 
